@@ -1,0 +1,18 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../lib"
+  previewFeatures = ["clientExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+    id      String @unique @db.Uuid
+    name    String @db.VarChar(255)
+    description String @db.Text
+    
+    @@map("campaign")
+}
